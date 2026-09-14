@@ -6,13 +6,15 @@ A compact core guide and optional skills for agents researching protection techn
 
 ## Why this exists
 
-The aim is to help an agent understand the research purpose, develop alternatives, apply techniques from other fields, and investigate them autonomously within the authorized scope. Working implementations and reliable evidence should advance a useful decision.
+These instructions help agents connect protection research to a useful decision, develop grounded alternatives, and investigate within authorization. Working implementations and reliable evidence should support that decision.
 
 The core combines engineering fundamentals with a short research loop:
 
 **Understand the purpose → frame the question → develop grounded alternatives → run an informative experiment → validate the evidence → decide what to do next.**
 
-Detailed procedures are optional and loaded when relevant. Routine development stays lightweight; exploration permits small prototypes; effectiveness and adoption claims require stronger evidence. The effect of these instructions on agent behavior and research outcomes still needs comparative evaluation.
+Load detailed procedures only when relevant. Routine development stays lightweight; exploration permits prototypes; effectiveness and adoption claims require validation. The instructions' effect on research outcomes still needs comparative evaluation.
+
+For workflow evaluation, compare with single-agent exploration on representative tasks under the same model, tools, and total budget. Count failed runs, coordination, and validation. Compare supported decisions, errors, human intervention, elapsed time, and actual usage; limit cost claims when usage is unavailable. Budget this trial separately; individual delegated tasks do not require it.
 
 ## Contents
 
@@ -22,7 +24,7 @@ Detailed procedures are optional and loaded when relevant. Routine development s
 | `protection-research` | Broad goals, mechanisms, alternative designs, and new techniques | [Skill](skills/protection-research/SKILL.md) | [스킬](kr/skills/protection-research/SKILL.md) |
 | `protection-evaluation` | Measurement, comparison, effectiveness claims, and adoption | [Skill](skills/protection-evaluation/SKILL.md) | [스킬](kr/skills/protection-evaluation/SKILL.md) |
 
-The guide works on its own. Each skill is a self-contained procedure and does not require the other. Project facts and experiment results belong in the project's existing documents and research record.
+The guide and each skill work independently. Keep project facts and results in existing documents and research records. Findings can lead from exploration to evaluation, or back to investigation, without requiring both skills.
 
 ## Use the core guide
 
@@ -40,7 +42,9 @@ Copy your preferred language version into your repository as `PROJECT-GUIDE.md`.
 Read PROJECT-GUIDE.md before starting and apply it to this task.
 ```
 
-Provide the higher-level protection objective, required behavior and practical constraints, authorized targets and data, available build/test commands, and resource limits. Link existing documentation instead of restating it. A broad goal is sufficient to start: the agent should derive research questions and candidate approaches, making consequential assumptions explicit and asking about material ambiguities.
+Provide the protection objective, required behavior, practical constraints, authorized targets/data, build/test commands, and resource limits. Link existing context. A broad goal is sufficient: the agent derives questions and candidates, states consequential assumptions, and asks about material ambiguities.
+
+State limits in observable units (time, attempts, tokens, credits, or spend) and keep those units distinct. Context capacity is not remaining allowance. Use runtime spending and concurrency controls where supported; instructions cannot enforce billing caps or prevent interruption. Without a stated budget, begin with a small bounded probe and reassess; unknown balances remain unknown.
 
 ## Add optional procedures
 
@@ -55,7 +59,7 @@ Choose the English folders under `skills/` or the Korean folders under `kr/skill
     protection-evaluation/SKILL.md
 ```
 
-Install only one language version of each skill, preserving its folder and skill name. The two languages use the same names. Check that the desired skills appear in the agent's available skills before relying on automatic selection.
+Install one language version per skill, preserving folder and skill names. Both languages use the same names. Confirm the skills appear in the agent's available skills before relying on automatic selection.
 
 Codex initially receives skill names and descriptions and reads a skill's body when selected. Descriptions specify when each procedure applies; in Codex CLI or the IDE extension, you can also explicitly invoke `$protection-research` or `$protection-evaluation`. See the [official skill documentation](https://learn.chatgpt.com/docs/build-skills) for discovery and invocation details.
 
@@ -72,10 +76,10 @@ When designing research measurements or comparisons, assessing protection
 effectiveness, or deciding adoption, read
 skills/protection-evaluation/SKILL.md and apply the relevant procedure.
 
-Read only the procedure relevant to the current decision. Neither is
+Read only the procedures relevant to the current decision. Neither is
 required for routine development with a settled approach. If a procedure
 is unavailable, apply PROJECT-GUIDE.md (or the merged AGENTS.md) and state
 any actual evidence or capability limits.
 ```
 
-Keep these paths consistent with your chosen layout. Optional procedures do not need to be read together or on every task, and their absence does not prevent use of the core guide. No plugin, connector, or particular model is required.
+Keep paths consistent with your layout. Load procedures only when useful; their absence does not prevent using the core guide. No plugin, connector, or particular model is required.
